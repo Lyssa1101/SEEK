@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        form { margin-bottom: 20px; }
+        input { padding: 8px; margin-right: 5px; }
+        button { padding: 8px 12px; }
+    </style>
+</head>
+<body>
+    <h1>Job Listings</h1>
+
+    <form method="GET" action="/">
+        <input type="text" name="keyword" placeholder="Keyword" value="{{ keyword }}">
+        <input type="text" name="location" placeholder="Location" value="{{ location }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Link</th>
+        </tr>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job[0] }}</td>
+            <td>{{ job[1] }}</td>
+            <td>{{ job[2] }}</td>
+            <td><a href="{{ job[3] }}" target="_blank">View Job</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
